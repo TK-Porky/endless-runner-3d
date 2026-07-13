@@ -3,11 +3,13 @@
 [ext_resource type="Script" uid="uid://b8vx80485g543" path="res://scenes/level/obstacle.gd" id="1_oxs0m"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hwv6u"]
+size = Vector3(3, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hwv6u"]
 albedo_color = Color(0.5637542, 0.14518315, 0.19919646, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_kdqwu"]
+size = Vector3(3, 1, 1)
 
 [node name="Obstacle" type="Area3D"]
 collision_layer = 4

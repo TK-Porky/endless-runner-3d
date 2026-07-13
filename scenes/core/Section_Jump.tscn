@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://csyg5hra5348i"]
+
+[ext_resource type="PackedScene" uid="uid://j8uinxxnwa21" path="res://scenes/core/BaseSection.tscn" id="1_d1rqe"]
+[ext_resource type="PackedScene" uid="uid://c1f8vou8ni6de" path="res://scenes/level/Obstacle.tscn" id="2_i6moj"]
+
+[node name="Section_Jump" instance=ExtResource("1_d1rqe")]
+
+[node name="Obstacle" parent="." index="2" instance=ExtResource("2_i6moj")]
+transform = Transform3D(4, 0, 0, 0, 2, 0, 0, 0, 1, 0, 1.2, -25)
