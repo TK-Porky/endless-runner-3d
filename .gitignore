@@ -1,0 +1,48 @@
+# ==========================================
+# Godot 4 — Fichiers générés et temporaires
+# ==========================================
+
+# Dossier de cache principal (contient les imports automatiques de Godot 4)
+.godot/
+
+# Fichiers d'importation spécifiques (Godot 3.x / reliquats)
+*.import
+
+# Données de configuration locales à l'éditeur (position des fenêtres, scripts ouverts, etc.)
+.import/
+export_presets.cfg
+
+# ==========================================
+# Systèmes d'exploitation et Éditeurs externes
+# ==========================================
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# VS Code / Visual Studio
+.vscode/
+.vs/
+*.sln
+*.csproj
+
+# Mono / C# (Si jamais tu passes sur la version .NET plus tard)
+.mono/
+bld/
+bin/
+obj/
+
+# ==========================================
+# Dossiers de builds / Exports (Conseillé)
+# ==========================================
+
+# Ignore les exécutables compilés pour éviter de surcharger GitHub
+build/
+bin/
+exports/
