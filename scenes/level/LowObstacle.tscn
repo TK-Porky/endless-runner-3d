@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1f8vou8ni6de"]
+
+[ext_resource type="Script" uid="uid://b8vx80485g543" path="res://scenes/level/obstacle.gd" id="1_ne6hl"]
+[ext_resource type="PackedScene" uid="uid://dve2io68bjgo0" path="res://assets/3d_models/barrier.glb" id="2_wl2ts"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hwv6u"]
+size = Vector3(3, 1.5, 0.5)
+
+[node name="LowObstacle" type="Area3D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_ne6hl")
+
+[node name="barrier" parent="." instance=ExtResource("2_wl2ts")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_hwv6u")

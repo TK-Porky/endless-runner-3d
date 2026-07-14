@@ -19,6 +19,7 @@ func _physics_process(delta: float) -> void:
 	if GameManager.is_game_over:
 		if not is_on_floor():
 			velocity.y -= gravity * delta
+			velocity.z = 0
 			move_and_slide()
 		return
 	

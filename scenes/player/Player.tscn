@@ -1,8 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cndi0m40wcf1u"]
 
 [ext_resource type="Script" uid="uid://2pdb2e2ddjfa" path="res://scenes/player/player.gd" id="1_wr5hl"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_o8nba"]
+[ext_resource type="PackedScene" uid="uid://b6meudns2tbhs" path="res://assets/3d_models/blackGuy.glb" id="2_gfjak"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wr5hl"]
 
@@ -10,8 +9,8 @@
 collision_layer = 2
 script = ExtResource("1_wr5hl")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_o8nba")
+[node name="blackGuy" parent="." instance=ExtResource("2_gfjak")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.28213066, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_wr5hl")

@@ -1,12 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://j8uinxxnwa21"]
+[gd_scene load_steps=4 format=3 uid="uid://j8uinxxnwa21"]
 
 [ext_resource type="Script" uid="uid://dr6xaj2vlukdh" path="res://scenes/level/base_section.gd" id="1_7j13y"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qijcc"]
-albedo_color = Color(0.15127608, 0.15127608, 0.15127608, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_qijcc"]
-size = Vector3(12, 0.5, 50)
+[ext_resource type="PackedScene" uid="uid://crjmvd5ttk0p6" path="res://assets/3d_models/road.glb" id="2_mdmbr"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_qijcc"]
 data = PackedVector3Array(-6, 0.25, 25, 6, 0.25, 25, -6, -0.25, 25, 6, 0.25, 25, 6, -0.25, 25, -6, -0.25, 25, 6, 0.25, -25, -6, 0.25, -25, 6, -0.25, -25, -6, 0.25, -25, -6, -0.25, -25, 6, -0.25, -25, 6, 0.25, 25, 6, 0.25, -25, 6, -0.25, 25, 6, 0.25, -25, 6, -0.25, -25, 6, -0.25, 25, -6, 0.25, -25, -6, 0.25, 25, -6, -0.25, -25, -6, 0.25, 25, -6, -0.25, 25, -6, -0.25, -25, 6, 0.25, 25, -6, 0.25, 25, 6, 0.25, -25, -6, 0.25, 25, -6, 0.25, -25, 6, 0.25, -25, -6, -0.25, 25, 6, -0.25, 25, -6, -0.25, -25, 6, -0.25, 25, 6, -0.25, -25, -6, -0.25, -25)
@@ -14,14 +9,12 @@ data = PackedVector3Array(-6, 0.25, 25, 6, 0.25, 25, -6, -0.25, 25, 6, 0.25, 25,
 [node name="BaseSection" type="Node3D"]
 script = ExtResource("1_7j13y")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="road" parent="." instance=ExtResource("2_mdmbr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -25)
-material_override = SubResource("StandardMaterial3D_qijcc")
-mesh = SubResource("BoxMesh_qijcc")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+[node name="StaticBody3D" type="StaticBody3D" parent="road"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="road/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_qijcc")
 
 [node name="EndMarker" type="Marker3D" parent="."]
@@ -30,10 +23,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -50)
 [node name="SpawnPoints" type="Node3D" parent="."]
 
 [node name="Marker3D_Left" type="Marker3D" parent="SpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1.5, -15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1.7, -15)
 
 [node name="Marker3D_Center" type="Marker3D" parent="SpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, -25)
 
 [node name="Marker3D_Right" type="Marker3D" parent="SpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1.5, -35)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1.7, -35)
