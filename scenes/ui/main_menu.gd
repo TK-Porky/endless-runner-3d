@@ -1,0 +1,20 @@
+extends CanvasLayer
+
+@onready var high_score_label: Label =  $Control/MenuElements/HighScoreLabel
+@onready var play_button: Button = $Control/MenuElements/PlayButton
+@onready var quit_button: Button = $Control/MenuElements/QuitButton
+
+const GAME_SCENE_PATH = "res://scenes/core/Main.tscn"
+
+func _ready() -> void:
+	high_score_label.text = "HighScore : " + str(GameManager.high_score)
+	
+	play_button.pressed.connect(_on_play_pressed)
+	quit_button.pressed.connect(_on_quit_pressed)
+
+func _on_play_pressed() -> void:
+	GameManager.reset_game()
+	get_tree().change_scene_to_file(GAME_SCENE_PATH)
+
+func _on_quit_pressed() -> void:
+	get_tree().quit()

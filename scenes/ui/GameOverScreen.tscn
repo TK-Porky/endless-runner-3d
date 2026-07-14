@@ -20,14 +20,31 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -135.5
-offset_top = -34.5
-offset_right = 135.5
-offset_bottom = 34.5
+offset_left = -128.0
+offset_top = -190.0
+offset_right = 143.0
+offset_bottom = -121.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 50
 text = "Game Over"
+
+[node name="ScoreLabel" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -135.5
+offset_top = -90.0
+offset_right = 135.5
+offset_bottom = -21.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Score: 0"
+horizontal_alignment = 1
 
 [node name="RestartBtn" type="Button" parent="Control"]
 layout_mode = 0
@@ -45,4 +62,4 @@ offset_top = 496.0
 offset_right = 776.0
 offset_bottom = 538.0
 theme_override_font_sizes/font_size = 24
-text = "Quit"
+text = "Return to Menu"

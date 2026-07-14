@@ -10,8 +10,7 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):
-		# TODO : Ajouter les points au score (Carte 4)
+		GameManager.add_score(100)
 		# TODO : Jouer le son de collecte (Carte 13)
-		print("+10 Points !")
 		
 		queue_free()

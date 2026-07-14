@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://c2t8oqb02b2w2"]
+[gd_scene load_steps=11 format=3 uid="uid://c2t8oqb02b2w2"]
 
 [ext_resource type="PackedScene" uid="uid://cndi0m40wcf1u" path="res://scenes/player/Player.tscn" id="1_1wb4g"]
 [ext_resource type="PackedScene" uid="uid://crqueuvjubryk" path="res://scenes/ui/GameOverScreen.tscn" id="3_p1ppg"]
 [ext_resource type="PackedScene" uid="uid://b5uqpo3hux74r" path="res://scenes/level/LevelGenerator.tscn" id="4_v0fxp"]
 [ext_resource type="PackedScene" uid="uid://j8uinxxnwa21" path="res://scenes/level/BaseSection.tscn" id="5_dau2k"]
 [ext_resource type="PackedScene" uid="uid://d3idl8mbq8q80" path="res://scenes/level/Section_Obstacles.tscn" id="6_ld2r7"]
+[ext_resource type="PackedScene" uid="uid://cswgoos5l5aqe" path="res://scenes/ui/HUD.tscn" id="7_1wb4g"]
 [ext_resource type="PackedScene" uid="uid://csyg5hra5348i" path="res://scenes/level/Section_Jump.tscn" id="7_nxm05"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ey6xw"]
@@ -33,7 +34,9 @@ environment = SubResource("Environment_8mevb")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5695062, 0)
 jump_force = 8.0
 
-[node name="GameOverScreen" parent="." instance=ExtResource("3_p1ppg")]
-
 [node name="LevelGenerator" parent="." instance=ExtResource("4_v0fxp")]
 section_templates = Array[PackedScene]([ExtResource("5_dau2k"), ExtResource("6_ld2r7"), ExtResource("7_nxm05")])
+
+[node name="Hud" parent="." instance=ExtResource("7_1wb4g")]
+
+[node name="GameOverScreen" parent="." instance=ExtResource("3_p1ppg")]

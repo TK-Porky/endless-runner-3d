@@ -1,0 +1,63 @@
+[gd_scene load_steps=2 format=3 uid="uid://cp5wb6s4ytj4"]
+
+[ext_resource type="Script" uid="uid://b32nupwsb6bov" path="res://scenes/ui/main_menu.gd" id="1_vjtqc"]
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_vjtqc")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0, 0.14901961, 0.4862745)
+
+[node name="MenuElements" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="TitleLabel" type="Label" parent="Control/MenuElements"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "ENDLESS RUNNER 3D"
+
+[node name="HighScoreLabel" type="Label" parent="Control/MenuElements"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Highscore : 400"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="Control/MenuElements"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="Control/MenuElements"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Play"
+
+[node name="QuitButton" type="Button" parent="Control/MenuElements"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Quit"
