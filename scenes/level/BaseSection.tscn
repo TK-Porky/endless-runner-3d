@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://j8uinxxnwa21"]
 
-[ext_resource type="Script" uid="uid://dr6xaj2vlukdh" path="res://scenes/core/base_section.gd" id="1_7j13y"]
+[ext_resource type="Script" uid="uid://dr6xaj2vlukdh" path="res://scenes/level/base_section.gd" id="1_7j13y"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qijcc"]
 albedo_color = Color(0.15127608, 0.15127608, 0.15127608, 1)
@@ -26,3 +26,14 @@ shape = SubResource("ConcavePolygonShape3D_qijcc")
 
 [node name="EndMarker" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -50)
+
+[node name="SpawnPoints" type="Node3D" parent="."]
+
+[node name="Marker3D_Left" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1.5, -15)
+
+[node name="Marker3D_Center" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -25)
+
+[node name="Marker3D_Right" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1.5, -35)

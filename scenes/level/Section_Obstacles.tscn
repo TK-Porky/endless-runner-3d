@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d3idl8mbq8q80"]
 
-[ext_resource type="PackedScene" uid="uid://j8uinxxnwa21" path="res://scenes/core/BaseSection.tscn" id="1_s71a3"]
+[ext_resource type="PackedScene" uid="uid://j8uinxxnwa21" path="res://scenes/level/BaseSection.tscn" id="1_s71a3"]
 [ext_resource type="PackedScene" uid="uid://c1f8vou8ni6de" path="res://scenes/level/Obstacle.tscn" id="2_rivb3"]
 
 [node name="Section_Obstacles" instance=ExtResource("1_s71a3")]
@@ -14,8 +14,5 @@ transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, -3.5, 2, -35)
 [node name="Obstacle3" parent="." index="4" instance=ExtResource("2_rivb3")]
 transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, 0, 2, -5)
 
-[node name="Obstacle4" parent="." index="5" instance=ExtResource("2_rivb3")]
-transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, 0, 2, -25)
-
-[node name="Obstacle5" parent="." index="6" instance=ExtResource("2_rivb3")]
+[node name="Obstacle5" parent="." index="5" instance=ExtResource("2_rivb3")]
 transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, 0, 2, -45)
