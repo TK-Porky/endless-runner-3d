@@ -12,6 +12,12 @@ func _ready() -> void:
 	play_button.pressed.connect(_on_play_pressed)
 	quit_button.pressed.connect(_on_quit_pressed)
 
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("Confirm"):
+		_on_play_pressed()
+	if Input.is_action_just_pressed("Cancel"):
+		_on_quit_pressed()
+
 func _on_play_pressed() -> void:
 	GameManager.reset_game()
 	get_tree().change_scene_to_file(GAME_SCENE_PATH)

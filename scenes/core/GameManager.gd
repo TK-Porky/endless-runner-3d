@@ -4,8 +4,8 @@ signal game_over_triggered
 signal score_updated(new_score: int)
 
 var initial_speed := 15.0
-var max_speed := 40.0
-var acceleration_rate := 0.5
+var max_speed := 60.0
+var acceleration_rate := 0.2
 
 var current_speed := 0.0
 var is_game_over := false
@@ -20,9 +20,11 @@ func _ready() -> void:
 	reset_game()
 
 func _process(delta: float) -> void:
-	if not is_game_over and current_speed < max_speed:
-		current_speed += acceleration_rate * delta
-		current_speed = clamp(current_speed, initial_speed, max_speed)
+	if not is_game_over:
+		
+		if current_speed < max_speed:
+			current_speed += acceleration_rate * delta
+			current_speed = clamp(current_speed, initial_speed, max_speed)
 		
 		current_score += current_speed * delta
 		score_updated.emit(int(current_score))

@@ -43,9 +43,9 @@ func spawn_section(force_empty: bool) -> void:
 
 	var new_section = section_scene.instantiate() as Node3D
 	
-	new_section.global_position = Vector3(0, 0, next_spawn_z)
-	
 	add_child(new_section)
+	
+	new_section.global_position = Vector3(0, 0, next_spawn_z)
 	
 	var end_marker = new_section.get_node("EndMarker") as Marker3D
 	if end_marker:

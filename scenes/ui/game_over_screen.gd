@@ -16,8 +16,11 @@ func _ready() -> void:
 	quit_button.pressed.connect(_on_quit_pressed)
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("Confirm"):
+	if Input.is_action_just_pressed("Confirm") and GameManager.is_game_over:
 		_on_restart_pressed()
+	
+	if Input.is_action_just_pressed("Cancel"):
+		_on_quit_pressed()
 
 func show_game_over() -> void:
 	score_label.text = "Score : " + str(int(GameManager.current_score)) + "\n" + "Best Score : " + str(GameManager.high_score)

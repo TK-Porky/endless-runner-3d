@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cp5wb6s4ytj4"]
+[gd_scene load_steps=3 format=3 uid="uid://cp5wb6s4ytj4"]
 
 [ext_resource type="Script" uid="uid://b32nupwsb6bov" path="res://scenes/ui/main_menu.gd" id="1_vjtqc"]
+[ext_resource type="Texture2D" uid="uid://cmw7ad8wsh56w" path="res://RunnerLogo.png" id="2_6jbdy"]
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_vjtqc")
@@ -13,6 +14,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="RunnerLogo" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -120.0
+offset_right = -257.99463
+offset_bottom = 101.58191
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2534181, 1.2702029)
+texture = ExtResource("2_6jbdy")
+expand_mode = 1
+
 [node name="Background" type="ColorRect" parent="Control"]
 layout_mode = 1
 anchors_preset = 15
@@ -20,7 +35,29 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.043137256, 0, 0.14901961, 0.4862745)
+color = Color(0.22670749, 0.22670749, 0.22670746, 0.4862745)
+
+[node name="DevLabel" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 651.0
+offset_right = 419.0
+offset_bottom = 706.0
+theme_override_font_sizes/font_size = 20
+text = "Made by TK-Porky@2026"
+vertical_alignment = 2
+
+[node name="CreditLabel" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 830.0
+offset_top = 651.0
+offset_right = 1270.0
+offset_bottom = 706.0
+theme_override_font_sizes/font_size = 20
+text = "Music - Video Game Land from Freesound.org
+Sound - player hurt from Freesound.org"
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="MenuElements" type="VBoxContainer" parent="Control"]
 layout_mode = 1
