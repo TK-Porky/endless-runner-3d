@@ -2,6 +2,8 @@ extends Node
 
 signal game_over_triggered
 signal score_updated(new_score: int)
+signal coins_updated(total_coins: int)
+signal total_coins_updated(total_coins: int)
 
 var initial_speed := 15.0
 var max_speed := 60.0
@@ -15,8 +17,11 @@ const SAVE_PATH = "user://save_data.cfg"
 var current_score: float = 0.0
 var high_score: int = 0
 
+var current_run_coins: int = 0
+var total_coins: int = 0
+
 func _ready() -> void:
-	load_highscore()
+	load_data()
 	reset_game()
 
 func _process(delta: float) -> void:
@@ -39,34 +44,48 @@ func trigger_game_over() -> void:
 	
 	is_game_over = true
 	current_speed = 0.0
+	
+	total_coins += current_run_coins
+	total_coins_updated.emit(total_coins)
+	
 	check_new_highscore()
+	save_data()
 	
 	game_over_triggered.emit()
 
 func reset_game() -> void:
 	current_speed = initial_speed
 	current_score = 0.0
+	current_run_coins = 0
 	is_game_over = false
+	coins_updated.emit(current_run_coins)
+
+func collect_coin() -> void:
+	if not is_game_over:
+		current_run_coins += 1
+		coins_updated.emit(current_run_coins)
 
 func check_new_highscore() -> void:
 	var final_score = int(current_score)
 	if final_score > high_score:
 		high_score = final_score
-		save_highscore()
 
-func save_highscore() -> void:
+func save_data() -> void:
 	var config = ConfigFile.new()
 	config.set_value("Leaderboard", "high_score", high_score)
+	config.set_value("Economy", "total_coins", total_coins)
 	
 	var err = config.save(SAVE_PATH)
 	if err != OK:
-		push_error("Impossible de sauvegarder le meilleur score !")
+		push_error("Impossible de sauvegarder les données du jeu !")
 
-func load_highscore() -> void:
+func load_data() -> void:
 	var config = ConfigFile.new()
 	var err = config.load(SAVE_PATH)
 	
 	if err == OK:
 		high_score = config.get_value("Leaderboard", "high_score", 0)
+		total_coins = config.get_value("Economy", "total_coins", 0)
 	else:
 		high_score = 0
+		total_coins = 0

@@ -1,19 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://d3idl8mbq8q80"]
+[gd_scene load_steps=3 format=3 uid="uid://d3idl8mbq8q80"]
 
 [ext_resource type="PackedScene" uid="uid://j8uinxxnwa21" path="res://scenes/level/BaseSection.tscn" id="1_s71a3"]
-[ext_resource type="PackedScene" uid="uid://c1f8vou8ni6de" path="res://scenes/level/LowObstacle.tscn" id="2_rivb3"]
 [ext_resource type="PackedScene" uid="uid://c844s00ghjav3" path="res://scenes/level/HighObstacle.tscn" id="3_ueg4h"]
 
 [node name="Section_Obstacles" instance=ExtResource("1_s71a3")]
 
-[node name="Obstacle5" parent="." index="2" instance=ExtResource("2_rivb3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7477236, -45)
-
-[node name="HighObstacle" parent="." index="4" instance=ExtResource("3_ueg4h")]
+[node name="HighObstacle" parent="." index="3" instance=ExtResource("3_ueg4h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, -5)
 
-[node name="HighObstacle2" parent="." index="5" instance=ExtResource("3_ueg4h")]
+[node name="HighObstacle2" parent="." index="4" instance=ExtResource("3_ueg4h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7, 1.4, -15)
 
-[node name="HighObstacle3" parent="." index="6" instance=ExtResource("3_ueg4h")]
+[node name="HighObstacle3" parent="." index="5" instance=ExtResource("3_ueg4h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7, 1.4, -35)
+
+[node name="CoinSpawnPoint" type="Marker3D" parent="." index="6" groups=["coin_spawn"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, -40)

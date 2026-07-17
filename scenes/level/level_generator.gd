@@ -6,6 +6,11 @@ extends Node3D
 @export var initial_sections_count: int = 6
 @export var safe_start_sections: int = 2
 
+@export var pattern_templates: Array[PackedScene] = [
+	preload("res://scenes/level/patterns/CoinPatternStraight.tscn"),
+	preload("res://scenes/level/patterns/CoinPatternDiagonal.tscn")
+]
+
 var next_spawn_z: float = 0.0
 
 var active_sections: Array[Node3D] = []
@@ -42,10 +47,18 @@ func spawn_section(force_empty: bool) -> void:
 		section_scene = section_templates[random_index]
 
 	var new_section = section_scene.instantiate() as Node3D
-	
 	add_child(new_section)
-	
 	new_section.global_position = Vector3(0, 0, next_spawn_z)
+	
+	# Coins Patterns Generator
+	var spawn_points = new_section.find_children("*", "Marker3D")
+	for point in spawn_points:
+		if point.is_in_group("coin_spawn") and pattern_templates.size() > 0:
+			var random_pattern_scene = pattern_templates.pick_random()
+			var pattern_instance = random_pattern_scene.instantiate() as Node3D
+			
+			point.add_child(pattern_instance)
+			pattern_instance.position = Vector3.ZERO
 	
 	var end_marker = new_section.get_node("EndMarker") as Marker3D
 	if end_marker:

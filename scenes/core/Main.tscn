@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://c2t8oqb02b2w2"]
+[gd_scene load_steps=13 format=3 uid="uid://c2t8oqb02b2w2"]
 
 [ext_resource type="PackedScene" uid="uid://cndi0m40wcf1u" path="res://scenes/player/Player.tscn" id="1_1wb4g"]
+[ext_resource type="Script" uid="uid://chlrt4n25xhdf" path="res://scenes/core/follow_camera.gd" id="2_p1ppg"]
 [ext_resource type="PackedScene" uid="uid://crqueuvjubryk" path="res://scenes/ui/GameOverScreen.tscn" id="3_p1ppg"]
 [ext_resource type="PackedScene" uid="uid://b5uqpo3hux74r" path="res://scenes/level/LevelGenerator.tscn" id="4_v0fxp"]
 [ext_resource type="PackedScene" uid="uid://j8uinxxnwa21" path="res://scenes/level/BaseSection.tscn" id="5_dau2k"]
@@ -33,8 +34,12 @@ shadow_enabled = true
 environment = SubResource("Environment_8mevb")
 
 [node name="Player" parent="." instance=ExtResource("1_1wb4g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5695062, -3.0935218)
-jump_force = 8.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, -2.5)
+
+[node name="FollowCamera" type="Camera3D" parent="." node_paths=PackedStringArray("player")]
+transform = Transform3D(1, 0, 0, 0, 0.81915206, 0.57357645, 0, -0.57357645, 0.81915206, 0, 3.408, 0)
+script = ExtResource("2_p1ppg")
+player = NodePath("../Player")
 
 [node name="LevelGenerator" parent="." instance=ExtResource("4_v0fxp")]
 section_templates = Array[PackedScene]([ExtResource("5_dau2k"), ExtResource("6_ld2r7"), ExtResource("7_nxm05")])

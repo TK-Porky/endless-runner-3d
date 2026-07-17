@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player") and not _collected:
 		_collected = true
-		GameManager.add_score(100)
+		GameManager.collect_coin()
 		
 		visible = false
 		set_deferred("monitoring", false)

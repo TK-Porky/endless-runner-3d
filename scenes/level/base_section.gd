@@ -2,6 +2,7 @@ extends Node3D
 
 const COIN_SCENE = preload("res://scenes/level/Coin.tscn")
 const LOW_OBSTACLE_SCENE = preload("res://scenes/level/LowObstacle.tscn")
+const MEDIUM_OBSTACLE_SCENE = preload("res://scenes/level/MediumObstacle.tscn")
 const HIGH_OBSTACLE_SCENE = preload("res://scenes/level/HighObstacle.tscn")
 
 var player: Player = null
@@ -17,16 +18,17 @@ func spawn_objects() -> void:
 	var spawn_points_container = get_node_or_null("SpawnPoints")
 	if not spawn_points_container:
 		return
-
 	for marker in spawn_points_container.get_children():
 		if marker is Marker3D:
 			var r = randi() % 10
 			
-			if r < 3:
+			if r < 3: # 0, 1, 2 (30%)
 				spawn_item(COIN_SCENE, marker.position)
-			elif r < 5:
+			elif r < 5: # 3, 4 (20%)
 				spawn_item(LOW_OBSTACLE_SCENE, marker.position)
-			elif r < 7:
+			elif r < 7: # 5, 6 (20%)
+				spawn_item(MEDIUM_OBSTACLE_SCENE, marker.position)
+			elif r < 9: # 7, 8 (20%)
 				spawn_item(HIGH_OBSTACLE_SCENE, marker.position)
 
 func spawn_item(packed_scene: PackedScene, local_position: Vector3) -> void:
