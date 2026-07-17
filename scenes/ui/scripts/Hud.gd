@@ -1,4 +1,5 @@
 extends CanvasLayer
+class_name HUD
 
 @onready var live_score_label: Label = $LiveScoreLabel
 @onready var high_score_label: Label = $HighScoreLabel

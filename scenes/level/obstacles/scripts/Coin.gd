@@ -1,4 +1,5 @@
 extends Area3D
+class_name Coin
 
 @export var rotation_speed: float = 3.0 
 @onready var pickup_sound: AudioStreamPlayer = $PickupSound

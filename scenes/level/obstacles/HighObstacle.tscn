@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c844s00ghjav3"]
 
-[ext_resource type="Script" uid="uid://b8vx80485g543" path="res://scenes/level/obstacle.gd" id="1_uhcvl"]
-[ext_resource type="PackedScene" uid="uid://ewrfsd6nj6qe" path="res://assets/3d_models/bigBarrier.glb" id="2_uhcvl"]
+[ext_resource type="Script" uid="uid://b8vx80485g543" path="res://scenes/level/obstacles/scripts/Obstacle.gd" id="1_blb7x"]
+[ext_resource type="PackedScene" uid="uid://ewrfsd6nj6qe" path="res://assets/3d_models/bigBarrier.glb" id="2_b7a4v"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hwv6u"]
 size = Vector3(3.1967773, 3.4310913, 0.5)
@@ -9,9 +9,9 @@ size = Vector3(3.1967773, 3.4310913, 0.5)
 [node name="HighObstacle" type="Area3D"]
 collision_layer = 4
 collision_mask = 2
-script = ExtResource("1_uhcvl")
+script = ExtResource("1_blb7x")
 
-[node name="bigBarrier" parent="." instance=ExtResource("2_uhcvl")]
+[node name="bigBarrier" parent="." instance=ExtResource("2_b7a4v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

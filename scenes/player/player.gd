@@ -58,8 +58,11 @@ func _physics_process(delta: float) -> void:
 	global_position.x = lerp(global_position.x, target_x, shift_speed * delta)
 	
 	# Gravity & Jump Handling
+	var speed_ratio: float = GameManager.current_speed / 12.0
+	var dynamic_gravity = (gravity * 2.5) * speed_ratio
+	
 	if not is_on_floor():
-		velocity.y -= (gravity * 2.5) * delta
+		velocity.y -= dynamic_gravity * delta
 	else:
 		velocity.y = 0
 	
@@ -72,7 +75,8 @@ func _physics_process(delta: float) -> void:
 		if is_sliding:
 			$player_visual.position.y = -0.73
 			is_sliding = false
-		velocity.y = jump_force
+		
+		velocity.y = jump_force * sqrt(speed_ratio)
 		jump_sound.play()
 	
 	# Handle Animations

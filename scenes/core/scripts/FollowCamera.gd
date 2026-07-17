@@ -1,10 +1,11 @@
 extends Camera3D
+class_name FollowCamera
 
 @export var player: Player
 
-@export var offset := Vector3(0, 3.5, 2.5)
+@export var offset := Vector3(0, 3.0, 3.5)
 
-@export var follow_speed := 10.0
+@export var follow_speed := 15.0
 
 func _ready() -> void:
 	if not player:
@@ -27,7 +28,7 @@ func _physics_process(delta: float) -> void:
 		player.global_position.z + offset.z
 	)
 	
-	global_position.z = lerp(global_position.z, target_position.z, follow_speed * delta)
+	global_position.z = player.global_position.z + offset.z
 	global_position.y = lerp(global_position.y, target_position.y, follow_speed * delta)
 	
 	global_position.x = 0

@@ -1,13 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://c2t8oqb02b2w2"]
+[gd_scene load_steps=14 format=3 uid="uid://c2t8oqb02b2w2"]
 
 [ext_resource type="PackedScene" uid="uid://cndi0m40wcf1u" path="res://scenes/player/Player.tscn" id="1_1wb4g"]
-[ext_resource type="Script" uid="uid://chlrt4n25xhdf" path="res://scenes/core/follow_camera.gd" id="2_p1ppg"]
+[ext_resource type="Script" uid="uid://chlrt4n25xhdf" path="res://scenes/core/scripts/FollowCamera.gd" id="2_p1ppg"]
 [ext_resource type="PackedScene" uid="uid://crqueuvjubryk" path="res://scenes/ui/GameOverScreen.tscn" id="3_p1ppg"]
-[ext_resource type="PackedScene" uid="uid://b5uqpo3hux74r" path="res://scenes/level/LevelGenerator.tscn" id="4_v0fxp"]
-[ext_resource type="PackedScene" uid="uid://j8uinxxnwa21" path="res://scenes/level/BaseSection.tscn" id="5_dau2k"]
-[ext_resource type="PackedScene" uid="uid://d3idl8mbq8q80" path="res://scenes/level/Section_Obstacles.tscn" id="6_ld2r7"]
+[ext_resource type="PackedScene" uid="uid://b5uqpo3hux74r" path="res://scenes/level/manager/LevelGenerator.tscn" id="4_v0fxp"]
+[ext_resource type="PackedScene" uid="uid://j8uinxxnwa21" path="res://scenes/level/sections/standard/StandardSection.tscn" id="5_dau2k"]
+[ext_resource type="PackedScene" uid="uid://d3idl8mbq8q80" path="res://scenes/level/sections/slalom/SlalomSection.tscn" id="6_ld2r7"]
 [ext_resource type="PackedScene" uid="uid://cswgoos5l5aqe" path="res://scenes/ui/HUD.tscn" id="7_1wb4g"]
-[ext_resource type="PackedScene" uid="uid://csyg5hra5348i" path="res://scenes/level/Section_Jump.tscn" id="7_nxm05"]
+[ext_resource type="PackedScene" uid="uid://csyg5hra5348i" path="res://scenes/level/sections/jump/JumpSection.tscn" id="7_nxm05"]
+[ext_resource type="PackedScene" uid="uid://cyviqgs11qo5i" path="res://scenes/level/sections/tunnel/TunnelSection.tscn" id="7_v0fxp"]
 [ext_resource type="AudioStream" uid="uid://7s6iscog70fo" path="res://assets/audio/music.ogg" id="8_8tad8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ey6xw"]
@@ -23,6 +24,11 @@ background_mode = 2
 sky = SubResource("Sky_ga6q8")
 tonemap_mode = 2
 glow_enabled = true
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(1, 1, 1, 1)
+fog_density = 1.0
+fog_depth_curve = 1.5
 
 [node name="Main" type="Node3D"]
 
@@ -42,7 +48,7 @@ script = ExtResource("2_p1ppg")
 player = NodePath("../Player")
 
 [node name="LevelGenerator" parent="." instance=ExtResource("4_v0fxp")]
-section_templates = Array[PackedScene]([ExtResource("5_dau2k"), ExtResource("6_ld2r7"), ExtResource("7_nxm05")])
+section_templates = Array[PackedScene]([ExtResource("5_dau2k"), ExtResource("6_ld2r7"), ExtResource("7_nxm05"), ExtResource("7_v0fxp")])
 
 [node name="Hud" parent="." instance=ExtResource("7_1wb4g")]
 

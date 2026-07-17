@@ -20,7 +20,7 @@ run/layer_3=""
 
 [autoload]
 
-GameManager="*res://scenes/core/GameManager.gd"
+GameManager="*res://scenes/core/scripts/GameManager.gd"
 
 [display]
 

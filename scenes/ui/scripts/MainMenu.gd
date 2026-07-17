@@ -1,4 +1,5 @@
 extends CanvasLayer
+class_name MainMenu
 
 @onready var coin_label: Label = $Control/EconomyElements/CoinLabel
 @onready var high_score_label: Label =  $Control/MenuElements/HighScoreLabel

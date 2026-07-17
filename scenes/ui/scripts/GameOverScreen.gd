@@ -1,4 +1,5 @@
 extends CanvasLayer
+class_name GameOverScreen
 
 @onready var control_node: Control = $Control
 @onready var restart_button: Button = $Control/RestartBtn

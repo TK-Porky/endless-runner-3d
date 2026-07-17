@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://biw3pvgq353mi"]
 
-[ext_resource type="Script" uid="uid://uyftt3tculok" path="res://scenes/level/coin.gd" id="1_wpxpu"]
-[ext_resource type="PackedScene" uid="uid://dyykd72bwxeun" path="res://assets/3d_models/coin.glb" id="2_63v57"]
-[ext_resource type="AudioStream" uid="uid://bjwyt3p1c7b6l" path="res://assets/audio/pickupCoin.wav" id="3_2sncg"]
+[ext_resource type="Script" uid="uid://uyftt3tculok" path="res://scenes/level/obstacles/scripts/Coin.gd" id="1_3g6c5"]
+[ext_resource type="PackedScene" uid="uid://dyykd72bwxeun" path="res://assets/3d_models/coin.glb" id="2_8yis4"]
+[ext_resource type="AudioStream" uid="uid://bjwyt3p1c7b6l" path="res://assets/audio/pickupCoin.wav" id="3_ubfr7"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_kqva2"]
 height = 0.15
@@ -10,14 +10,14 @@ height = 0.15
 [node name="Coin" type="Area3D"]
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("1_wpxpu")
+script = ExtResource("1_3g6c5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 shape = SubResource("CylinderShape3D_kqva2")
 
-[node name="coin" parent="." instance=ExtResource("2_63v57")]
+[node name="coin" parent="." instance=ExtResource("2_8yis4")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 
 [node name="PickupSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_2sncg")
+stream = ExtResource("3_ubfr7")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dr37hfujt0fag"]
 
-[ext_resource type="PackedScene" uid="uid://biw3pvgq353mi" path="res://scenes/level/Coin.tscn" id="1_yuxfb"]
-[ext_resource type="PackedScene" uid="uid://c1f8vou8ni6de" path="res://scenes/level/LowObstacle.tscn" id="2_vyp02"]
+[ext_resource type="PackedScene" uid="uid://biw3pvgq353mi" path="res://scenes/level/obstacles/Coin.tscn" id="1_yuxfb"]
+[ext_resource type="PackedScene" uid="uid://c1f8vou8ni6de" path="res://scenes/level/obstacles/LowObstacle.tscn" id="2_vyp02"]
 
 [node name="CoinPattern" type="Node3D"]
 

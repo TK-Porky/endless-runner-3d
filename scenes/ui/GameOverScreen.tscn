@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://crqueuvjubryk"]
 
-[ext_resource type="Script" uid="uid://bly466f42bvvu" path="res://scenes/ui/game_over_screen.gd" id="1_0pcqs"]
+[ext_resource type="Script" uid="uid://bly466f42bvvu" path="res://scenes/ui/scripts/GameOverScreen.gd" id="1_0pcqs"]
 
 [node name="GameOverScreen" type="CanvasLayer"]
 script = ExtResource("1_0pcqs")

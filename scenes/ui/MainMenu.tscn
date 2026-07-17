@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cp5wb6s4ytj4"]
 
-[ext_resource type="Script" uid="uid://b32nupwsb6bov" path="res://scenes/ui/main_menu.gd" id="1_vjtqc"]
+[ext_resource type="Script" uid="uid://b32nupwsb6bov" path="res://scenes/ui/scripts/MainMenu.gd" id="1_vjtqc"]
 [ext_resource type="Texture2D" uid="uid://cmw7ad8wsh56w" path="res://RunnerLogo.png" id="2_6jbdy"]
 
 [node name="MainMenu" type="CanvasLayer"]

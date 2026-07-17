@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://csyg5hra5348i"]
+
+[ext_resource type="PackedScene" uid="uid://j8uinxxnwa21" path="res://scenes/level/sections/standard/StandardSection.tscn" id="1_6dnt0"]
+[ext_resource type="PackedScene" uid="uid://c1f8vou8ni6de" path="res://scenes/level/obstacles/LowObstacle.tscn" id="2_fvias"]
+[ext_resource type="Script" uid="uid://xuvvfwggua71" path="res://scenes/level/sections/jump/JumpSection.gd" id="2_suxhb"]
+[ext_resource type="PackedScene" uid="uid://biw3pvgq353mi" path="res://scenes/level/obstacles/Coin.tscn" id="3_2db6s"]
+[ext_resource type="PackedScene" uid="uid://dr37hfujt0fag" path="res://scenes/level/patterns/ObstacleJumpPattern.tscn" id="3_hk8ai"]
+
+[node name="JumpSection" instance=ExtResource("1_6dnt0")]
+script = ExtResource("2_suxhb")
+jump_obstacle_scene = ExtResource("3_2db6s")
+rhythm_spacing = 12.0
+lane_variation = true
+
+[node name="Marker3D_Left" parent="SpawnPoints" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1.7, -5)
+visible = false
+
+[node name="Marker3D_Center" parent="SpawnPoints" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.69779, 1.7, -15.324348)
+visible = false
+
+[node name="Marker3D_Right" parent="SpawnPoints" index="2"]
+visible = false
+
+[node name="Obstacle" parent="." index="3" instance=ExtResource("2_fvias")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6728568, 1.7751172, -25)
+
+[node name="Obstacle2" parent="." index="4" instance=ExtResource("2_fvias")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6799066, 1.7751172, -25)
+
+[node name="CoinSpawnPoint" type="Marker3D" parent="." index="5" groups=["coin_spawn"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, -40)
+
+[node name="CoinPattern" parent="." index="6" instance=ExtResource("3_hk8ai")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.775, -18)
