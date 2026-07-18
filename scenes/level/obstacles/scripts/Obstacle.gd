@@ -5,5 +5,7 @@ func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 
 func _on_body_entered(body: Node3D) -> void:
-	if body.is_in_group("Player"):
-		GameManager.trigger_game_over()
+	if body is Player:
+		body.hit_obstacle()
+		if body.has_shield:
+			queue_free()

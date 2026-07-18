@@ -6,8 +6,8 @@ class_name LevelGenerator
 @export var initial_sections_count: int = 6
 @export var safe_start_sections: int = 1
 @export var pattern_templates: Array[PackedScene] = [
-	preload("res://scenes/level/patterns/CoinPatternStraight.tscn"),
-	preload("res://scenes/level/patterns/CoinPatternDiagonal.tscn")
+	preload("res://scenes/level/coinspatterns/CoinPatternStraight.tscn"),
+	preload("res://scenes/level/coinspatterns/CoinPatternDiagonal.tscn")
 ]
 
 @export_group("Tuning")
@@ -33,8 +33,6 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if not player:
 		return
-	# "while" au lieu de "if" pour rattraper le retard si le joueur
-	# avance plus vite que le rythme de spawn (ex: baisse de FPS).
 	while player.global_position.z < next_spawn_z + spawn_ahead_distance:
 		spawn_section(false)
 

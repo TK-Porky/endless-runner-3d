@@ -1,16 +1,32 @@
-[gd_scene load_steps=7 format=3 uid="uid://j8uinxxnwa21"]
+[gd_scene load_steps=12 format=3 uid="uid://j8uinxxnwa21"]
 
 [ext_resource type="Script" uid="uid://c2stxvf36i33l" path="res://scenes/level/sections/standard/StandardSection.gd" id="1_iqyrr"]
 [ext_resource type="PackedScene" uid="uid://cokfbkvh8ae8j" path="res://assets/3d_models/tree.glb" id="2_3guf8"]
+[ext_resource type="Script" uid="uid://dbeoovna1f7p1" path="res://scenes/resources/ObstacleData.gd" id="2_aksw6"]
 [ext_resource type="PackedScene" uid="uid://crjmvd5ttk0p6" path="res://assets/3d_models/road.glb" id="2_s267j"]
 [ext_resource type="PackedScene" uid="uid://d4klypjlgbwwi" path="res://assets/3d_models/rock.glb" id="3_3ajr0"]
+[ext_resource type="PackedScene" uid="uid://biw3pvgq353mi" path="res://scenes/level/coinspatterns/Coin.tscn" id="3_aksw6"]
 [ext_resource type="PackedScene" uid="uid://bgvss8mbjuhi4" path="res://assets/3d_models/terrainGreen.glb" id="3_s267j"]
+[ext_resource type="PackedScene" uid="uid://caolofdv7lhw1" path="res://scenes/level/powerups/shield/ShieldPowerUp.tscn" id="6_3ajr0"]
+
+[sub_resource type="Resource" id="Resource_5pnwm"]
+script = ExtResource("2_aksw6")
+scene = ExtResource("6_3ajr0")
+weight = 5.0
+metadata/_custom_type_script = "uid://dbeoovna1f7p1"
+
+[sub_resource type="Resource" id="Resource_kikyo"]
+script = ExtResource("2_aksw6")
+scene = ExtResource("3_aksw6")
+weight = 25.0
+metadata/_custom_type_script = "uid://dbeoovna1f7p1"
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_qijcc"]
 data = PackedVector3Array(-6, 0.25, 25, 6, 0.25, 25, -6, -0.25, 25, 6, 0.25, 25, 6, -0.25, 25, -6, -0.25, 25, 6, 0.25, -25, -6, 0.25, -25, 6, -0.25, -25, -6, 0.25, -25, -6, -0.25, -25, 6, -0.25, -25, 6, 0.25, 25, 6, 0.25, -25, 6, -0.25, 25, 6, 0.25, -25, 6, -0.25, -25, 6, -0.25, 25, -6, 0.25, -25, -6, 0.25, 25, -6, -0.25, -25, -6, 0.25, 25, -6, -0.25, 25, -6, -0.25, -25, 6, 0.25, 25, -6, 0.25, 25, 6, 0.25, -25, -6, 0.25, 25, -6, 0.25, -25, 6, 0.25, -25, -6, -0.25, 25, 6, -0.25, 25, -6, -0.25, -25, 6, -0.25, 25, 6, -0.25, -25, -6, -0.25, -25)
 
 [node name="StandardSection" type="Node3D"]
 script = ExtResource("1_iqyrr")
+obstacles = Array[ExtResource("2_aksw6")]([SubResource("Resource_5pnwm"), SubResource("Resource_kikyo")])
 tree_templates = Array[PackedScene]([ExtResource("2_3guf8")])
 rock_templates = Array[PackedScene]([ExtResource("3_3ajr0")])
 
@@ -27,13 +43,13 @@ shape = SubResource("ConcavePolygonShape3D_qijcc")
 
 [node name="SpawnPoints" type="Node3D" parent="."]
 
-[node name="Marker3D_Left" type="Marker3D" parent="SpawnPoints"]
+[node name="Marker3D_Left" type="Marker3D" parent="SpawnPoints" groups=["ObstacleSpawn"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1.7, -15)
 
-[node name="Marker3D_Center" type="Marker3D" parent="SpawnPoints"]
+[node name="Marker3D_Center" type="Marker3D" parent="SpawnPoints" groups=["ObstacleSpawn"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, -25)
 
-[node name="Marker3D_Right" type="Marker3D" parent="SpawnPoints"]
+[node name="Marker3D_Right" type="Marker3D" parent="SpawnPoints" groups=["ObstacleSpawn"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1.7, -35)
 
 [node name="DecorMarker" type="Marker3D" parent="SpawnPoints" groups=["DecorSpawn"]]

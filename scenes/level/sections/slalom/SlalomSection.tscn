@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://j8uinxxnwa21" path="res://scenes/level/sections/standard/StandardSection.tscn" id="1_ddup5"]
 [ext_resource type="PackedScene" uid="uid://c844s00ghjav3" path="res://scenes/level/obstacles/HighObstacle.tscn" id="2_k0sv3"]
 [ext_resource type="Script" uid="uid://cuklavl270rri" path="res://scenes/level/sections/slalom/SlalomSection.gd" id="2_lxb5h"]
-[ext_resource type="PackedScene" uid="uid://biw3pvgq353mi" path="res://scenes/level/obstacles/Coin.tscn" id="3_p72nr"]
+[ext_resource type="PackedScene" uid="uid://biw3pvgq353mi" path="res://scenes/level/coinspatterns/Coin.tscn" id="3_p72nr"]
 
 [node name="SlalomSection" instance=ExtResource("1_ddup5")]
 script = ExtResource("2_lxb5h")

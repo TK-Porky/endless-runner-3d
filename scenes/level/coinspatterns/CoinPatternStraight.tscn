@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cmodssiq3q7n"]
 
-[ext_resource type="PackedScene" uid="uid://biw3pvgq353mi" path="res://scenes/level/obstacles/Coin.tscn" id="1_3dcx8"]
+[ext_resource type="PackedScene" uid="uid://biw3pvgq353mi" path="res://scenes/level/coinspatterns/Coin.tscn" id="1_3dcx8"]
 
 [node name="CoinPattern" type="Node3D"]
 

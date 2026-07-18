@@ -20,6 +20,9 @@ var _current_anim_state: String = ""
 
 @onready var collision_shape: CollisionShape3D = $CollisionShape3D
 
+@export var has_shield: bool = false
+@onready var shield_visual: Node3D = $shield_visual
+
 var is_sliding := false
 var slide_duration := 0.9
 var original_height := 2.0
@@ -29,15 +32,14 @@ func _ready() -> void:
 	add_to_group("Player")
 	target_x = 0.0
 	$player_visual.position.y = -0.73
+	if shield_visual:
+		shield_visual.visible = false
+
 
 func _physics_process(delta: float) -> void:
 	# Handle Game Over
 	if GameManager.is_game_over:
-		if not _is_death_animation_played:
-			$player_visual.position.y = -0.73
-			state_machine.travel("death")
-			death_sound.play()
-			_is_death_animation_played = true
+		die()
 		
 		if not is_on_floor():
 			velocity.y -= gravity * delta
@@ -96,6 +98,7 @@ func _physics_process(delta: float) -> void:
 	velocity.x = 0
 	move_and_slide()
 
+
 func start_slide() -> void:
 	is_sliding = true
 	
@@ -111,6 +114,7 @@ func start_slide() -> void:
 	
 	stop_slide()
 
+
 func stop_slide() -> void:
 	if GameManager.is_game_over: return 
 	
@@ -123,6 +127,31 @@ func stop_slide() -> void:
 	$player_visual.position.y = -0.73
 	
 	is_sliding = false
+
+
+func activate_shield() -> void:
+	has_shield = true
+	if shield_visual:
+		shield_visual.visible = true
+
+
+func hit_obstacle() -> void:
+	if has_shield:
+		has_shield = false
+		if shield_visual:
+			shield_visual.visible = false
+	else:
+		GameManager.trigger_game_over()
+		die()
+
+
+func die() -> void:
+	if not _is_death_animation_played:
+		$player_visual.position.y = -0.73
+		state_machine.travel("death")
+		death_sound.play()
+		_is_death_animation_played = true
+
 
 func _change_animation_state(new_state: String) -> void:
 	if _current_anim_state != new_state:
