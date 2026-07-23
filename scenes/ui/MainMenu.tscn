@@ -1,7 +1,45 @@
-[gd_scene load_steps=3 format=3 uid="uid://cp5wb6s4ytj4"]
+[gd_scene load_steps=8 format=3 uid="uid://cp5wb6s4ytj4"]
 
 [ext_resource type="Script" uid="uid://b32nupwsb6bov" path="res://scenes/ui/scripts/MainMenu.gd" id="1_vjtqc"]
-[ext_resource type="Texture2D" uid="uid://cmw7ad8wsh56w" path="res://RunnerLogo.png" id="2_6jbdy"]
+[ext_resource type="FontFile" uid="uid://cooyqc5w7bcaf" path="res://assets/fonts/LilitaOne-Regular.ttf" id="3_2ysvc"]
+[ext_resource type="PackedScene" uid="uid://c54gw3l1h80fl" path="res://scenes/ui/scenes/MainMenuScenary.tscn" id="3_iwbf0"]
+[ext_resource type="PackedScene" uid="uid://clx10464kptuk" path="res://scenes/ui/visual/CutoutTransitionScreen.tscn" id="4_2ysvc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xpiny"]
+bg_color = Color(0, 0, 0, 0.78431374)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bhu4a"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e2per"]
+bg_color = Color(0, 0, 0, 0.5882353)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_vjtqc")
@@ -14,21 +52,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="RunnerLogo" type="TextureRect" parent="Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -120.0
-offset_right = -257.99463
-offset_bottom = 101.58191
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.2534181, 1.2702029)
-texture = ExtResource("2_6jbdy")
-expand_mode = 1
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Control"]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="SubViewport" type="SubViewport" parent="Control/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1280, 720)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="Control/SubViewportContainer/SubViewport"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.473, 1.512, 10.145)
+
+[node name="MainMenuScenary" parent="Control/SubViewportContainer/SubViewport" instance=ExtResource("3_iwbf0")]
 
 [node name="Background" type="ColorRect" parent="Control"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -43,8 +83,10 @@ offset_left = 9.0
 offset_top = 651.0
 offset_right = 419.0
 offset_bottom = 706.0
+theme_override_fonts/font = ExtResource("3_2ysvc")
 theme_override_font_sizes/font_size = 20
-text = "Made by TK-Porky@2026"
+text = "Made by TK-Porky@2026
+v1.2.0"
 vertical_alignment = 2
 
 [node name="CreditLabel" type="Label" parent="Control"]
@@ -53,6 +95,7 @@ offset_left = 830.0
 offset_top = 651.0
 offset_right = 1270.0
 offset_bottom = 706.0
+theme_override_fonts/font = ExtResource("3_2ysvc")
 theme_override_font_sizes/font_size = 20
 text = "Music - Video Game Land from Freesound.org
 Sound - player hurt from Freesound.org"
@@ -61,26 +104,32 @@ vertical_alignment = 1
 
 [node name="MenuElements" type="VBoxContainer" parent="Control"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+anchors_preset = -1
+anchor_left = 0.0375
+anchor_top = 0.28125
+anchor_right = 0.3578125
+anchor_bottom = 0.6951389
+offset_top = 5.5
+offset_bottom = -5.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 16
+metadata/_edit_use_anchors_ = true
 
 [node name="TitleLabel" type="Label" parent="Control/MenuElements"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 15
+theme_override_fonts/font = ExtResource("3_2ysvc")
 theme_override_font_sizes/font_size = 40
 text = "ENDLESS RUNNER 3D"
+horizontal_alignment = 1
 
 [node name="HighScoreLabel" type="Label" parent="Control/MenuElements"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 15
+theme_override_fonts/font = ExtResource("3_2ysvc")
 theme_override_font_sizes/font_size = 30
 text = "Highscore : 400"
 horizontal_alignment = 1
@@ -90,13 +139,29 @@ custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
 [node name="PlayButton" type="Button" parent="Control/MenuElements"]
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_constants/outline_size = 15
+theme_override_constants/h_separation = 15
+theme_override_fonts/font = ExtResource("3_2ysvc")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_xpiny")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bhu4a")
+theme_override_styles/hover = SubResource("StyleBoxFlat_e2per")
+theme_override_styles/focus = SubResource("StyleBoxFlat_e2per")
 text = "Play"
 
 [node name="QuitButton" type="Button" parent="Control/MenuElements"]
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_constants/outline_size = 15
+theme_override_constants/h_separation = 15
+theme_override_fonts/font = ExtResource("3_2ysvc")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_xpiny")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bhu4a")
+theme_override_styles/hover = SubResource("StyleBoxFlat_e2per")
+theme_override_styles/focus = SubResource("StyleBoxFlat_e2per")
 text = "Quit"
 
 [node name="EconomyElements" type="HBoxContainer" parent="Control"]
@@ -107,8 +172,18 @@ offset_bottom = 42.0
 grow_horizontal = 2
 
 [node name="CoinLabel" type="Label" parent="Control/EconomyElements"]
+custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 size_flags_horizontal = 10
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 15
+theme_override_fonts/font = ExtResource("3_2ysvc")
 theme_override_font_sizes/font_size = 30
 text = "Coins : 400"
 horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CutoutTransitionScreen" parent="." instance=ExtResource("4_2ysvc")]
+visible = false
+
+[editable path="Control/SubViewportContainer/SubViewport/MainMenuScenary"]

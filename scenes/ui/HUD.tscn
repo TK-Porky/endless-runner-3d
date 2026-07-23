@@ -1,32 +1,209 @@
-[gd_scene load_steps=2 format=3 uid="uid://cswgoos5l5aqe"]
+[gd_scene load_steps=9 format=3 uid="uid://cswgoos5l5aqe"]
 
 [ext_resource type="Script" uid="uid://ix85dlee4veo" path="res://scenes/ui/scripts/Hud.gd" id="1_kw0id"]
+[ext_resource type="FontFile" uid="uid://cooyqc5w7bcaf" path="res://assets/fonts/LilitaOne-Regular.ttf" id="2_atyv1"]
+[ext_resource type="PackedScene" uid="uid://b3m62dfai7yhm" path="res://scenes/ui/visual/PowerUpUI.tscn" id="3_6ll6g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_atyv1"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 0.5882353)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ll6g"]
+content_margin_left = 16.0
+content_margin_top = 4.0
+content_margin_right = 16.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 0.5882353)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="Animation" id="Animation_atyv1"]
+resource_name = "Multiplier_up"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/VBoxContainer/TopItems/ScoreItems/MultiplierScoreLabel:theme_override_font_sizes/font_size")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [32, 50, 32]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/VBoxContainer/TopItems/ScoreItems/MultiplierScoreLabel:theme_override_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1006127, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 1, 0, 1), null]
+}
+
+[sub_resource type="Animation" id="Animation_6ll6g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/VBoxContainer/TopItems/ScoreItems/MultiplierScoreLabel:theme_override_font_sizes/font_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [32]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/VBoxContainer/TopItems/ScoreItems/MultiplierScoreLabel:theme_override_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ig75s"]
+_data = {
+&"Multiplier_up": SubResource("Animation_atyv1"),
+&"RESET": SubResource("Animation_6ll6g")
+}
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_kw0id")
+indicator_scene = ExtResource("3_6ll6g")
 
-[node name="LiveScoreLabel" type="Label" parent="."]
-offset_left = 21.0
-offset_top = 12.0
-offset_right = 106.0
-offset_bottom = 57.0
-theme_override_font_sizes/font_size = 32
-text = "Score"
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
 
-[node name="HighScoreLabel" type="Label" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HighScoreLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 visible = false
-offset_left = 23.0
-offset_top = 72.0
-offset_right = 108.0
-offset_bottom = 117.0
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 15
+theme_override_fonts/font = ExtResource("2_atyv1")
 theme_override_font_sizes/font_size = 32
 text = "HighScore"
 
-[node name="LiveCoinsLabel" type="Label" parent="."]
-offset_left = 1096.0
-offset_top = 12.0
-offset_right = 1252.0
-offset_bottom = 57.0
+[node name="TopItems" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ScoreItems" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TopItems"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="MultiplierScoreLabel" type="Label" parent="MarginContainer/VBoxContainer/TopItems/ScoreItems"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 15
+theme_override_fonts/font = ExtResource("2_atyv1")
 theme_override_font_sizes/font_size = 32
-text = "Coins"
-horizontal_alignment = 2
+text = "x1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/TopItems/ScoreItems"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_atyv1")
+
+[node name="LiveScoreLabel" type="Label" parent="MarginContainer/VBoxContainer/TopItems/ScoreItems/PanelContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 15
+theme_override_fonts/font = ExtResource("2_atyv1")
+theme_override_font_sizes/font_size = 32
+text = "999,999,999"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TopItems"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/TopItems/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6ll6g")
+
+[node name="LiveCoinsLabel" type="Label" parent="MarginContainer/VBoxContainer/TopItems/HBoxContainer/PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 15
+theme_override_fonts/font = ExtResource("2_atyv1")
+theme_override_font_sizes/font_size = 32
+text = "0 Coins"
+horizontal_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_6ll6g")
+
+[node name="CommandLabel" type="Label" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 15
+theme_override_fonts/font = ExtResource("2_atyv1")
+theme_override_font_sizes/font_size = 32
+text = "Esc - Quit"
+horizontal_alignment = 1
+
+[node name="PowerUpContainer" type="HBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 296.0
+offset_top = 642.0
+offset_right = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 32
+alignment = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_ig75s")
+}

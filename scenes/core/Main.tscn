@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://c2t8oqb02b2w2"]
+[gd_scene load_steps=16 format=3 uid="uid://c2t8oqb02b2w2"]
 
 [ext_resource type="PackedScene" uid="uid://cndi0m40wcf1u" path="res://scenes/player/Player.tscn" id="1_1wb4g"]
+[ext_resource type="Script" uid="uid://djv3xy3q0cb2y" path="res://scenes/core/scripts/Main.gd" id="1_ld2r7"]
 [ext_resource type="Script" uid="uid://chlrt4n25xhdf" path="res://scenes/core/scripts/FollowCamera.gd" id="2_p1ppg"]
 [ext_resource type="PackedScene" uid="uid://crqueuvjubryk" path="res://scenes/ui/GameOverScreen.tscn" id="3_p1ppg"]
 [ext_resource type="PackedScene" uid="uid://b5uqpo3hux74r" path="res://scenes/level/manager/LevelGenerator.tscn" id="4_v0fxp"]
@@ -10,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://csyg5hra5348i" path="res://scenes/level/sections/jump/JumpSection.tscn" id="7_nxm05"]
 [ext_resource type="PackedScene" uid="uid://cyviqgs11qo5i" path="res://scenes/level/sections/tunnel/TunnelSection.tscn" id="7_v0fxp"]
 [ext_resource type="AudioStream" uid="uid://7s6iscog70fo" path="res://assets/audio/music.ogg" id="8_8tad8"]
+[ext_resource type="PackedScene" uid="uid://clx10464kptuk" path="res://scenes/ui/visual/CutoutTransitionScreen.tscn" id="12_nxm05"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ey6xw"]
 sky_horizon_color = Color(0.405433, 0.6853028, 0.89755464, 1)
@@ -31,6 +33,7 @@ fog_density = 1.0
 fog_depth_curve = 1.5
 
 [node name="Main" type="Node3D"]
+script = ExtResource("1_ld2r7")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
@@ -41,9 +44,10 @@ environment = SubResource("Environment_8mevb")
 
 [node name="Player" parent="." instance=ExtResource("1_1wb4g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, -2.5)
+jump_force = 11.0
 
 [node name="FollowCamera" type="Camera3D" parent="." node_paths=PackedStringArray("player")]
-transform = Transform3D(1, 0, 0, 0, 0.81915206, 0.57357645, 0, -0.57357645, 0.81915206, 0, 3.408, 0)
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 3, 0)
 script = ExtResource("2_p1ppg")
 player = NodePath("../Player")
 
@@ -52,7 +56,13 @@ section_templates = Array[PackedScene]([ExtResource("5_dau2k"), ExtResource("6_l
 
 [node name="Hud" parent="." instance=ExtResource("7_1wb4g")]
 
+[node name="TransitionScreen" type="CanvasLayer" parent="."]
+
+[node name="CutoutTransitionScreen" parent="TransitionScreen" instance=ExtResource("12_nxm05")]
+unique_name_in_owner = true
+
 [node name="GameOverScreen" parent="." instance=ExtResource("3_p1ppg")]
+visible = false
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_8tad8")

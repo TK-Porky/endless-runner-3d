@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://ce5e3hchsy414"]
+[gd_scene load_steps=4 format=3 uid="uid://ce5e3hchsy414"]
 
 [ext_resource type="Script" uid="uid://bdmdrjfxhqnab" path="res://scenes/level/powerups/PowerUp.gd" id="1_8sjq0"]
+[ext_resource type="AudioStream" uid="uid://dkcirmhk4pem3" path="res://assets/audio/PowerUp.wav" id="2_dlgdj"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8sjq0"]
 
@@ -8,6 +9,7 @@
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_8sjq0")
+powerup_sound = ExtResource("2_dlgdj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_8sjq0")

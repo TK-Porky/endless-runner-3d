@@ -5,6 +5,7 @@ class_name MainMenu
 @onready var high_score_label: Label =  $Control/MenuElements/HighScoreLabel
 @onready var play_button: Button = $Control/MenuElements/PlayButton
 @onready var quit_button: Button = $Control/MenuElements/QuitButton
+@onready var cutout_transition_screen: TransitionScreen = $CutoutTransitionScreen
 
 const GAME_SCENE_PATH = "res://scenes/core/Main.tscn"
 
@@ -14,16 +15,21 @@ func _ready() -> void:
 	
 	play_button.pressed.connect(_on_play_pressed)
 	quit_button.pressed.connect(_on_quit_pressed)
+	cutout_transition_screen.transition_anim_finished.connect(change_scene)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Confirm"):
 		_on_play_pressed()
 	if Input.is_action_just_pressed("Cancel"):
 		_on_quit_pressed()
 
 func _on_play_pressed() -> void:
-	GameManager.reset_game()
-	get_tree().change_scene_to_file(GAME_SCENE_PATH)
+	cutout_transition_screen.show()
+	cutout_transition_screen.start_to_transition()
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
+
+func change_scene() -> void:
+	GameManager.reset_game()
+	get_tree().change_scene_to_file(GAME_SCENE_PATH)

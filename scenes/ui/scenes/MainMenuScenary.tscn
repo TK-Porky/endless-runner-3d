@@ -1,0 +1,75 @@
+[gd_scene load_steps=9 format=3 uid="uid://c54gw3l1h80fl"]
+
+[ext_resource type="PackedScene" uid="uid://cifusthoi83tl" path="res://assets/3d_models/trafficObstacle.glb" id="1_8pipp"]
+[ext_resource type="PackedScene" uid="uid://crjmvd5ttk0p6" path="res://assets/3d_models/road.glb" id="2_nscfy"]
+[ext_resource type="PackedScene" uid="uid://bgvss8mbjuhi4" path="res://assets/3d_models/terrainGreen.glb" id="3_22xmp"]
+[ext_resource type="PackedScene" uid="uid://cokfbkvh8ae8j" path="res://assets/3d_models/tree.glb" id="4_h6vvl"]
+[ext_resource type="PackedScene" uid="uid://bv2p7bwt5u8hj" path="res://scenes/ui/visual/PlayerVisualMenu.tscn" id="6_nscfy"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8pipp"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_nscfy"]
+sky_material = SubResource("ProceduralSkyMaterial_8pipp")
+
+[sub_resource type="Environment" id="Environment_22xmp"]
+background_mode = 2
+sky = SubResource("Sky_nscfy")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="MainMenuScenary" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_22xmp")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="trafficObstacle" parent="." instance=ExtResource("1_8pipp")]
+transform = Transform3D(2.9802322e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, 2.9802322e-08, -4.6776814, 1.6034143, 10.00546)
+
+[node name="road" parent="." instance=ExtResource("2_nscfy")]
+
+[node name="terrainGreen" parent="." instance=ExtResource("3_22xmp")]
+
+[node name="tree" parent="." instance=ExtResource("4_h6vvl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.244232, 0, 0)
+
+[node name="tree2" parent="." instance=ExtResource("4_h6vvl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.244232, 0, 4.215388)
+
+[node name="tree3" parent="." instance=ExtResource("4_h6vvl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.244232, 0, 8.481873)
+
+[node name="tree4" parent="." instance=ExtResource("4_h6vvl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.244232, 0, 13.099278)
+
+[node name="tree5" parent="." instance=ExtResource("4_h6vvl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.244232, 0, 17.816963)
+
+[node name="tree6" parent="." instance=ExtResource("4_h6vvl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.244232, 0, 22.77655)
+
+[node name="tree7" parent="." instance=ExtResource("4_h6vvl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.285713, 0, 0)
+
+[node name="tree8" parent="." instance=ExtResource("4_h6vvl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.285713, 0, 4.215388)
+
+[node name="tree9" parent="." instance=ExtResource("4_h6vvl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.285713, 0, 8.481873)
+
+[node name="tree10" parent="." instance=ExtResource("4_h6vvl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.285713, 0, 13.099278)
+
+[node name="tree11" parent="." instance=ExtResource("4_h6vvl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.285713, 0, 17.816963)
+
+[node name="tree12" parent="." instance=ExtResource("4_h6vvl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.285713, 0, 22.77655)
+
+[node name="PlayerVisualMenu" parent="." instance=ExtResource("6_nscfy")]
+transform = Transform3D(0.49999997, 0, 0.86602545, 0, 1, 0, -0.86602545, 0, 0.49999997, -3.5, 0.4, 9)

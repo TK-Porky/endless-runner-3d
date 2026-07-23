@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://bv2p7bwt5u8hj"]
+
+[ext_resource type="PackedScene" uid="uid://dj1ymiknduhb" path="res://assets/3d_models/player_idle_happy.glb" id="1_iq8dv"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_iq8dv"]
+animation = &"Armature|mixamo_com|Layer0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4sqa7"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fdy57"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_g3xyf"]
+states/Idle_Happy/node = SubResource("AnimationNodeAnimation_iq8dv")
+states/Idle_Happy/position = Vector2(522, 103)
+states/Start/position = Vector2(241, 103)
+transitions = ["Start", "Idle_Happy", SubResource("AnimationNodeStateMachineTransition_4sqa7"), "Idle_Happy", "End", SubResource("AnimationNodeStateMachineTransition_fdy57")]
+
+[node name="PlayerVisualMenu" instance=ExtResource("1_iq8dv")]
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/0/position = Vector3(-1.1493343, 1.752128, -86.270706)
+bones/0/rotation = Quaternion(-0.7137371, 0.0314236, -0.040462114, 0.69853765)
+bones/1/rotation = Quaternion(-0.014082243, -0.0011660436, -0.016159419, 0.99976957)
+bones/2/rotation = Quaternion(-0.034135085, 0.00064658275, -0.0029665881, 0.99941266)
+bones/3/rotation = Quaternion(-0.034087464, 0.000675533, -0.0029887205, 0.9994142)
+bones/4/rotation = Quaternion(-0.002191204, -0.0013437954, -0.0056023095, 0.9999811)
+bones/5/rotation = Quaternion(-0.06402597, -0.04020434, -0.09756623, 0.9923534)
+bones/7/rotation = Quaternion(0.6700781, 0.31811422, -0.57519394, 0.34489235)
+bones/8/position = Vector3(2.003404e-06, 12.6036005, 1.1094647e-05)
+bones/8/rotation = Quaternion(0.33904755, -0.22504237, -0.16827929, 0.8978222)
+bones/9/rotation = Quaternion(0.051365424, 0.0013507607, 0.055592757, 0.9971305)
+bones/10/rotation = Quaternion(0.020870887, 0.002999144, 0.0010500059, 0.99977714)
+bones/11/position = Vector3(-2.3930102e-07, 4.8131, -3.5744254e-06)
+bones/11/rotation = Quaternion(0.17809045, 0.57147074, 0.002216907, 0.8010619)
+bones/12/rotation = Quaternion(0.60146874, -0.0044863215, 0.28421816, 0.7466159)
+bones/13/rotation = Quaternion(-0.6376916, 0.1640344, -0.098709814, 0.7461224)
+bones/14/position = Vector3(-0.026081324, 0.30611587, 0.45225468)
+bones/15/rotation = Quaternion(0.66518116, -0.30760264, 0.58295274, 0.3508287)
+bones/16/position = Vector3(-8.689551e-06, 12.622721, 5.2476366e-06)
+bones/16/rotation = Quaternion(0.31820503, 0.404134, 0.28517753, 0.8087614)
+bones/17/rotation = Quaternion(0.08897428, -0.0016073794, -0.09269909, 0.99170965)
+bones/18/rotation = Quaternion(0.090551525, -0.10421967, -0.087560765, 0.98654544)
+bones/19/position = Vector3(-3.8470666e-06, 4.848269, -3.1302716e-06)
+bones/19/rotation = Quaternion(0.11168438, -0.008795187, 0.03744737, 0.992999)
+bones/20/position = Vector3(3.695487e-06, 3.4738147, -2.1755698e-06)
+bones/20/rotation = Quaternion(0.21116796, -0.018382592, 0.29326364, 0.9322375)
+bones/21/rotation = Quaternion(-0.06941254, -0.14362814, 0.6138536, 0.7731344)
+bones/23/rotation = Quaternion(0.07355258, 0.020043261, 0.9963631, -0.03806447)
+bones/24/rotation = Quaternion(-0.14504525, -0.0012085922, 0.021522583, 0.9891902)
+bones/25/rotation = Quaternion(0.584071, 0.14827694, -0.108775936, 0.7905965)
+bones/26/rotation = Quaternion(0.26422542, 0.09454965, -0.02051473, 0.95959604)
+bones/28/rotation = Quaternion(-0.097612984, -0.026886923, 0.9941756, 0.03692729)
+bones/29/rotation = Quaternion(-0.08599191, 0.06599554, -0.022003323, 0.9938642)
+bones/30/rotation = Quaternion(0.553635, -0.15047877, 0.11693128, 0.81066114)
+bones/31/rotation = Quaternion(0.27692625, -0.08677986, 0.017640986, 0.956802)
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "Armature|mixamo_com|Layer0"
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+tree_root = SubResource("AnimationNodeStateMachine_g3xyf")
+anim_player = NodePath("../AnimationPlayer")
